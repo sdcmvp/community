@@ -6,6 +6,7 @@ import com.nowcoder.community.dao.UserMapper;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,5 +94,23 @@ public class MapperTest {
         loginTicketMapper.updateStatus("abc", 1);
         loginTicket = loginTicketMapper.selectByTicket("abc");
         System.out.println(loginTicket);
+    }
+
+    @Test
+    public void test() {
+        System.out.println(StringUtils.isBlank(""));//ture
+        System.out.println(StringUtils.isBlank(" "));//true
+        System.out.println(StringUtils.isBlank("  "));//true
+        System.out.println(StringUtils.isBlank(null));//true
+        System.out.println(StringUtils.isBlank("null"));//false
+        System.out.println(StringUtils.isBlank("  blank  "));//false
+        //制表符
+        System.out.println(StringUtils.isBlank("\t"));//true
+        //换行符
+        System.out.println(StringUtils.isBlank("\n"));//true
+        //换页符
+        System.out.println(StringUtils.isBlank("\f"));//true
+        //回车符
+        System.out.println(StringUtils.isBlank("\r"));//true
     }
 }
